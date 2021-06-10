@@ -1,0 +1,10 @@
+*.xml
+*.iml
+.idea/
+out/
+target/
+
+# From https://github.com/github/gitignore/blob/master/Gradle.gitignore
+.gradle
+/build/
+build/

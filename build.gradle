@@ -1,0 +1,39 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'java'
+}
+
+apply plugin: JacocoPlugin
+
+group 'ru.clevertec'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+gradlePlugin {
+    plugins {
+        downloadPlugin {
+            id = 'ru.clevertec.jenkins-gradle-plugin'
+            implementationClass = 'ru.clevertec.plugin.jacoco.JacocoPlugin'
+        }
+    }
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'ru.clevertec'
+            artifactId = 'jacoco'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+}
