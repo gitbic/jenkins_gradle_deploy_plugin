@@ -4,8 +4,6 @@ plugins {
     id 'java'
 }
 
-apply plugin: JacocoPlugin
-
 group 'ru.clevertec'
 version '1.0-SNAPSHOT'
 
@@ -15,9 +13,14 @@ repositories {
 
 gradlePlugin {
     plugins {
-        downloadPlugin {
-            id = 'ru.clevertec.jenkins-gradle-plugin'
+        jacocoPlugin {
+            id = 'jacoco-plugin'
             implementationClass = 'ru.clevertec.plugin.jacoco.JacocoPlugin'
+        }
+        sonarPlugin {
+            id = 'sonar-plugin'
+            implementationClass = 'ru.clevertec.plugin.sonarqube.SonarqubePlugin'
+
         }
     }
 }
@@ -37,3 +40,16 @@ publishing {
         }
     }
 }
+
+
+//buildscript {
+//    repositories {
+//        mavenLocal()
+//    }
+//    dependencies {
+//        classpath 'ru.clevertec:jenkins-gradle-plugin:1.0-SNAPSHOT'
+//    }
+//}
+//
+//apply plugin: 'jacoco-plugin'
+//apply plugin: 'sonar-plugin'

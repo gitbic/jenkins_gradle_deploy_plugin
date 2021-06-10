@@ -10,7 +10,7 @@ public class JacocoPlugin implements Plugin<Project> {
         project.getPluginManager().apply("jacoco");
 
 
-        project.task("hello").doLast(task -> {
+        project.task("helloJacoco").doLast(task -> {
             System.out.println("Hello from jacoco plugin");
         });
 
