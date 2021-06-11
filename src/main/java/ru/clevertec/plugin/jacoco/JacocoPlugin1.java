@@ -3,7 +3,7 @@ package ru.clevertec.plugin.jacoco;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
-public class JacocoPlugin implements Plugin<Project> {
+public class JacocoPlugin1 implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {

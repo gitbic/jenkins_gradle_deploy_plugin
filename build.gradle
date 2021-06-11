@@ -11,6 +11,8 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: 'groovy'
+
 gradlePlugin {
     plugins {
         jacocoPlugin {
@@ -19,13 +21,19 @@ gradlePlugin {
         }
         sonarPlugin {
             id = 'sonar-plugin'
-            implementationClass = 'ru.clevertec.plugin.sonarqube.SonarqubePlugin'
-
+            implementationClass = 'ru.clevertec.plugin.sonarqube.SonarPlugin'
+        }
+        ApplyPlugin {
+            id = 'apply-plugin'
+            implementationClass = 'ru.clevertec.plugin.ApplyPlugin'
         }
     }
 }
 
+
+
 dependencies {
+    runtimeOnly 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3'
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
 
@@ -33,10 +41,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'ru.clevertec'
-            artifactId = 'jacoco'
+            artifactId = 'jenkins-gradle-plugin'
             version = '1.0'
-
-            from components.java
         }
     }
 }
@@ -51,5 +57,4 @@ publishing {
 //    }
 //}
 //
-//apply plugin: 'jacoco-plugin'
-//apply plugin: 'sonar-plugin'
+//apply plugin: 'apply-plugin'
