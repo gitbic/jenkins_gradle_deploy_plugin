@@ -23,9 +23,13 @@ gradlePlugin {
             id = 'sonar-plugin'
             implementationClass = 'ru.clevertec.plugin.sonarqube.SonarPlugin'
         }
+        dockerPlugin {
+            id = 'docker-plugin'
+            implementationClass = 'ru.clevertec.plugin.docker.DockerPlugin'
+        }
         ApplyPlugin {
-            id = 'apply-plugin'
-            implementationClass = 'ru.clevertec.plugin.ApplyPlugin'
+            id = 'jenkins-gradle-deploy-plugin'
+            implementationClass = 'ru.clevertec.plugin.GeneralPlugin'
         }
     }
 }
@@ -34,6 +38,7 @@ gradlePlugin {
 
 dependencies {
     runtimeOnly 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3'
+    runtimeOnly 'com.bmuschko:gradle-docker-plugin:6.7.0'
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
 
@@ -41,7 +46,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'ru.clevertec'
-            artifactId = 'jenkins-gradle-plugin'
+            artifactId = 'jenkins-gradle-deploy-plugin'
             version = '1.0'
         }
     }

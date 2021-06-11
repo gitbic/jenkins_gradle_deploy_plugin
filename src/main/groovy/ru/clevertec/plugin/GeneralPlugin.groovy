@@ -3,10 +3,11 @@ package ru.clevertec.plugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class ApplyPlugin implements Plugin<Project> {
+class GeneralPlugin implements Plugin<Project> {
     static final PLUGIN_IDS = [
             'jacoco-plugin',
-            'sonar-plugin'
+            'sonar-plugin',
+            'docker-plugin'
     ]
 
     @Delegate
